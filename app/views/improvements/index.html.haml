@@ -1,0 +1,35 @@
+- provide(:title, @user.name)
+.col-md-12
+  .col-md-2
+    .row
+      %aside
+        %section.user_info
+          %h1
+            = gravatar_for @user
+            = @user.name
+    %p
+      %strong Nome:
+      = @user.name
+    %p
+      %strong Email:
+      = @user.email
+    %p
+      %strong Status:
+      = form_tag improvements_path, :method => 'get' do
+        - Status.all.each do |status|
+          = check_box_tag "status[]", status.id
+          = "#{status.name}"
+        %p
+          %br/
+          = text_field_tag :search, params[:search]
+          = submit_tag "Buscar", :title => nil,class: "btn btn-primary btn-go"
+  .col-md-10
+    %h1 Todas as Tarefas
+    %br/
+   
+    = will_paginate @improvements
+    %br/
+    %div{:id => "improvements_index"}
+      = render :partial => "index", :locals => {:improvements => @improvements}
+    = will_paginate @improvements
+    %br/

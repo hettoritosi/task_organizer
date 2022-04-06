@@ -1,0 +1,49 @@
+<br>
+<div class="alert alert-info">
+  <h3>
+<%= @improvement.title %>
+</h3>
+<hr>
+<p>
+  <%= @improvement.content %>
+</p>
+
+<br>
+  <hr>
+<p>
+  <strong>Categoria:</strong>
+  <%= @improvement.category %>
+</p>
+
+<p>
+  <strong>Criado por:</strong>
+  <%= @improvement.name %>
+</p>
+
+  <p>
+    <strong>Status:</strong>
+  <%- if @improvement.status.name == "Finalizado" %>
+      <td><font color="#00FF00"><%= @improvement.status.name %></font></td>
+  <% end %>
+  <%- if @improvement.status.name == "Em Progresso" %>
+      <td><font color="#00BFFF"><%= @improvement.status.name %></font></td>
+  <% end %>
+  <%- if @improvement.status.name == "Inicializado" %>
+      <td><font color="#FF0000"><%= @improvement.status.name %></font></td>
+  <% end %>
+  </p>
+  <p>
+    <strong>Responsável:</strong>
+    <%= @improvement.responsible.name %>
+
+  <p>
+    <strong>Criado em:</strong>
+    <%= @improvement.created_at.to_datetime.strftime("%d/%m/%Y")%>
+
+  <p>
+    <strong>Atualizado em:</strong>
+    <%= @improvement.updated_at.to_datetime.strftime("%d/%m/%Y")%>
+</div>
+
+<br>
+
